@@ -27,7 +27,7 @@ public class ClassicGame implements Screen {
     private Skin skinJson;
     private InputMultiplexer in;//
     private int ButtonSize;
-  //  GameMenu gameMenu;
+  GameMenu gameMenu;
     Player player;
 
     public ClassicGame(ProjectWithMySkin game, Skin skinJson) {
@@ -40,12 +40,12 @@ public class ClassicGame implements Screen {
         //стандартная настройка Stage
         stage = new Stage(new FitViewport(width, height));//
         stage.getCamera().position.set(height / 2, height / 2, 0);//Stage имеет свою камеру
-     //       gameMenu = new GameMenu(skinJson);//создание экземпляра класса GameMenu
+        gameMenu = new GameMenu(skinJson);//создание экземпляра класса GameMenu
         player = new Player(skinJson);
 
 
         in = new InputMultiplexer();
-    //    in.addProcessor(gameMenu); //добавление обработчика GameMenu,
+        in.addProcessor(gameMenu); //добавление обработчика GameMenu,
         // необхоимо для работы слушателей(ClickListener) у актеров сцены(кнопок)
      //   in.addProcessor(player);
         in.addProcessor(stage);
@@ -83,8 +83,8 @@ public class ClassicGame implements Screen {
         stage.act();//
         stage.draw();
 
-    //    gameMenu.act();
-     //   gameMenu.draw();
+        gameMenu.act();
+        gameMenu.draw();
 
  //       player.act();
  //       player.draw();
